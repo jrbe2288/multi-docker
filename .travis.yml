@@ -12,14 +12,14 @@ script:
     - docker run -e CI=true jrbe2288/react-test npm test
     
 after_success:
-    - docker build -t jrbe2288/multi-client ./client
-    - docker build -t jrbe2288/multi-nginx ./nginx
-    - docker build -t jrbe2288/multi-server ./server
-    - docker build -t jrbe2288/multi-worker ./worker
+    - docker build -t jrbe228/multi-client ./client
+    - docker build -t jrbe228/multi-nginx ./nginx
+    - docker build -t jrbe228/multi-server ./server
+    - docker build -t jrbe228/multi-worker ./worker
     # Log in to the Docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Take images and push to Dockerhub
-    - docker push jrbe2288/multi-client
-    - docker push jrbe2288/multi-nginx
-    - docker push jrbe2288/multi-server
-    - docker push jrbe2288/multi-worker
+    - docker push jrbe228/multi-client
+    - docker push jrbe228/multi-nginx
+    - docker push jrbe228/multi-server
+    - docker push jrbe228/multi-worker
