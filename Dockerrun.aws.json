@@ -5,19 +5,19 @@
 			"name": "client",
 			"image": "jrbe228/multi-client",
 			"hostname": "client",
-			"essential": false,
+			"essential": false
 		},
 		{
 			"name": "server",
 			"image": "jrbe228/multi-server",
 			"hostname": "api",
-			"essential": false,
+			"essential": false
 		},
 		{
 			"name": "worker",
 			"image": "jrbe228/multi-worker",
 			"hostname": "worker",
-			"essential": false,
+			"essential": false
 		},
 		{
 			"name": "nginx",
@@ -27,10 +27,10 @@
 			"portMappings": [
 				{
 					"hostPort": 80,
-					"containerPort": 80,
+					"containerPort": 80
 				}
 			],
-			"links": ["client", "server"],
+			"links": ["client", "server"]
 		}
 	]
 }
