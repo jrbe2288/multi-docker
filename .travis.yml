@@ -6,10 +6,10 @@ services:
     - docker
     
 before_install:
-    - docker build -t jrbe2288/react-test -f ./client/Dockerfile.dev ./client 
+    - docker build -t jrbe228/react-test -f ./client/Dockerfile.dev ./client 
     
 script:
-    - docker run -e CI=true jrbe2288/react-test npm test
+    - docker run -e CI=true jrbe228/react-test npm test
     
 after_success:
     - docker build -t jrbe228/multi-client ./client
@@ -23,3 +23,15 @@ after_success:
     - docker push jrbe228/multi-nginx
     - docker push jrbe228/multi-server
     - docker push jrbe228/multi-worker
+    
+deploy:
+    provider: elasticbeanstalk
+    region: 'us-east-2'
+    app: 'multi-docker'
+    env: 'MultiDocker-env'
+    bucket_name: 'elasticbeanstalk-us-east-2-012256633746'
+    bucket_path: 'docker-multi'
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
